@@ -1,4 +1,4 @@
-package com.example.tmp_migration_template
+package com.example.ma_app_test
 
 import io.flutter.embedding.android.FlutterActivity
 
