@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Users: users can read/write their own profile, admins can read/write all
+    match /users/{userId} {
+      allow read: if request.auth != null && (request.auth.uid == userId || request.auth.token.role == 'admin');
+      allow write: if request.auth != null && (request.auth.uid == userId || request.auth.token.role == 'admin');
+    }
+
+    // Lessons: student or instructor or admin can read; writes limited to participants or admin
+    match /lessons/{lessonId} {
+      allow read: if request.auth != null && (
+        resource.data.studentId == request.auth.uid ||
+        resource.data.instructorId == request.auth.uid ||
+        request.auth.token.role == 'admin'
+      );
+      allow create: if request.auth != null && (request.resource.data.studentId == request.auth.uid || request.auth.token.role == 'admin');
+      allow update, delete: if request.auth != null && (
+        resource.data.studentId == request.auth.uid ||
+        resource.data.instructorId == request.auth.uid ||
+        request.auth.token.role == 'admin'
+      );
+    }
+
+    // Payments: only owner or admin
+    match /payments/{paymentId} {
+      allow read, write: if request.auth != null && (request.auth.uid == resource.data.userId || request.auth.token.role == 'admin');
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
