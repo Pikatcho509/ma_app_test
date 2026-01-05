@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ma_app_test/firebase_stub.dart';
 import '../models/lesson.dart';
 
 class LessonsService {
@@ -8,15 +8,11 @@ class LessonsService {
 
   Stream<List<Lesson>> streamLessonsForUser(String uid) {
     final q1 = _lessons.where('studentId', isEqualTo: uid).orderBy('startAt');
-    final q2 = _lessons
-        .where('instructorId', isEqualTo: uid)
-        .orderBy('startAt');
+    final q2 =
+        _lessons.where('instructorId', isEqualTo: uid).orderBy('startAt');
     // Merge two queries by listening to both and concatenating results
     // Simpler approach: listen to all lessons and filter client-side (OK for MVP)
-    return _lessons
-        .orderBy('startAt')
-        .snapshots()
-        .map(
+    return _lessons.orderBy('startAt').snapshots().map(
           (snap) => snap.docs
               .map(
                 (d) =>

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:ma_app_test/firebase_stub.dart';
 import 'package:ma_app_test/screens/login_screen.dart';
 
 void main() {

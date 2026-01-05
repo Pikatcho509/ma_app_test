@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ma_app_test/firebase_stub.dart';
 
 class Lesson {
   final String id;
@@ -34,11 +34,11 @@ class Lesson {
   }
 
   Map<String, dynamic> toMap() => {
-    'studentId': studentId,
-    'instructorId': instructorId,
-    'startAt': Timestamp.fromDate(startAt),
-    'durationMinutes': durationMinutes,
-    'status': status,
-    'notes': notes,
-  };
+        'studentId': studentId,
+        'instructorId': instructorId,
+        'startAt': Timestamp.fromDate(startAt),
+        'durationMinutes': durationMinutes,
+        'status': status,
+        'notes': notes,
+      };
 }

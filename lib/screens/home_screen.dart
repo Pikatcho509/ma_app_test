@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ma_app_test/firebase_stub.dart';
 import '../services/auth_service.dart';
 
 class HomeScreen extends StatelessWidget {
