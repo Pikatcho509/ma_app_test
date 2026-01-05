@@ -7,8 +7,7 @@ import 'screens/lesson_details_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/admin_dashboard_screen.dart';
 
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ma_app_test/firebase_stub.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -130,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
-          mainAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('You have pushed the button this many times:'),
             Text(

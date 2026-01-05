@@ -1,5 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ma_app_test/firebase_stub.dart';
 
 class AuthService {
   FirebaseAuth get _auth => FirebaseAuth.instance;
